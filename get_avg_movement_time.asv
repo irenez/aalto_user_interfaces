@@ -10,6 +10,6 @@ function [mt] = get_avg_movement_time(data_array)
 % Output: mt, 1xN array. 
 %        The average movement time for each configuration.
 
-mt = data_array.time - mean(data_array.time);
+mt = cellfun(@mean, data_array.time);
 
 end

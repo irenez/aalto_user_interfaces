@@ -1,11 +1,10 @@
-function analyze_fitts_data%(filename)
+function analyze_fitts_data(filename)
 %% DO NOT MODIFY. This is the main file. It reads the data and calls the methods for analyzing it. Your task is to implement those methods in their separate files. 
 
 %% NOTHING TO DO HERE. 
 % data_array is a cell array that contains for each *single* target a table 
 % with the observed data. The columns of the table are the variables 
 % 'amplitude', 'width', 'endPos' and 'time'.
-    filename = 'experiment_data.txt';
     data_array = h_separate_observations(filename);
 
 % Tip: use the function cellfun to apply a function to every element of a
@@ -60,10 +59,10 @@ function [data] = h_separate_observations (filename)
 % Read the data of the logfile. Create a separate table with the 
 % observations of one target configuration. Note that one configuration has 
 % two targets that strictly alternate. Store all in one cell array.
-    
     allData = readtable(filename,'FileType', 'text',...
         'Delimiter', '\t',...
         'Format', '%f%f%f%f'); 
+%       allData = readtable(filename);
     
     amplitudes = unique(allData.amplitude);
     widths = unique(allData.width);

@@ -13,4 +13,6 @@ function [id_e] = get_effective_ID(data_array)
 %        The effective ID of each configuration as given by the Shannon 
 %        formulation and respecting the effective target width.
 
+id_e = log( data_array.amplitude ./ data_array.endPos + 1 );
+
 end

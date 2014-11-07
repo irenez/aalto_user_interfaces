@@ -11,4 +11,5 @@ function [id] = get_ID(data_array)
 % Output: id, 1xN array. 
 %        The ID of each configuration as given by the Shannon formulation.
 
+id = data_array.amplitude ./ data_array.width +1 ;
 end
