@@ -17,7 +17,7 @@ function [data_array] = remove_Outliers(data_array)
     std_data = std(data_array{i}.time);
     med_data = median(data_array{i}.time);
     dev_data = data_array{i}.time - med_data;
-    outliers = find( abs(dev_data) ) < 3*std_data;
+    outliers = find( abs(dev_data) < 3*std_data);
     data_array{i} = data_array{i}(outliers,:);
  end
 % data = table2cell(data_array{:});
