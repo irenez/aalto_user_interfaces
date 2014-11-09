@@ -19,9 +19,12 @@ function plot_model_originalData(mdl, x_original, y_original, description)
 %        for example be used in the title of the plot.
 %
 
-figure(1), plot(x_original, y_original, 'x')
-hold on
-y_predicted = predict(mdl, x_original');
-plot(x_original, y_predicted, 'or')
-hold off
+    plot(x_original, y_original, 'x')
+    hold on
+    y_predicted = predict(mdl, x_original');
+    plot(x_original, y_predicted, 'or')
+    legend('original data', 'predicted data', 'Location', 'northwest')
+    title(description)
+    hold off
+
 end

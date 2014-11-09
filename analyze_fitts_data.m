@@ -37,9 +37,11 @@ function analyze_fitts_data(filename)
     end
     
 %% (4) TODO. Plot original data and model. 
+    figure(1)
     if(~isempty(id) && ~isempty(mt))
         plot_model_originalData(mdl_designed_id, id, mt, 'designed ID');
     end
+    figure(2)
     if(~isempty(id_e) && ~isempty(mt))
         plot_model_originalData(mdl_effective_id, id_e, mt, 'effective ID');
     end
