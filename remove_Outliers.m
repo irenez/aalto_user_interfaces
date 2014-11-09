@@ -13,19 +13,17 @@ function [data_array] = remove_Outliers(data_array)
 % Output: data_array, 1xN cell. 
 %        The modified input, where outlier entries are removed.
 
-data_array = table2array(data_array);
-% std_data = std(data_array);
-% med_data = median(data_array);
-% outliers = find(abs( med_data(4) - data_array(:,4) ) < 3*std_data(4));
+data = table2cell(data_array{:});
+std_data = std(cellfun(@std, data));
+med_data = median(cellfun(@median, data));
+dev_data = gsubtract(data(:,4), med_data(4)) ;
+outliers = find(cellfun(@abs, dev_data) > 3*std_data(4));
+data_array (:,outliers) = [];
+
+% std_data = std(data);
+% med_data = median(data);
+% outliers = find(abs( med_data(4) - data(:,4) ) < 3*std_data(4));
 % data_array = data_array(outliers,:);
 
-% % -------------------------------------------
-% % Solution with cells
-% % -------------------------------------------
-% data_array = table2cell(data_array);
-% std_data = std(cellfun(@std, data_array));
-% med_data = median(cellfun(@median, data_array));
-% outliers = find(abs( med_data(4) - data_array{:,4} ) > 3*std_data(4));
-% data_array = data_array{outliers,:};
 
 end
