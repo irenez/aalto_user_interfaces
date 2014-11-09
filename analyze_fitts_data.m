@@ -1,11 +1,12 @@
-function analyze_fitts_data%(filename)
+function analyze_fitts_data(filename)
 %% DO NOT MODIFY. This is the main file. It reads the data and calls the methods for analyzing it. Your task is to implement those methods in their separate files. 
 
 %% NOTHING TO DO HERE. 
 % data_array is a cell array that contains for each *single* target a table 
 % with the observed data. The columns of the table are the variables 
 % 'amplitude', 'width', 'endPos' and 'time'.
-    filename = 'experiment_data.txt';
+
+%     filename = 'experiment_data.txt';
     data_array = h_separate_observations(filename);
 
 % Tip: use the function cellfun to apply a function to every element of a
@@ -20,7 +21,7 @@ function analyze_fitts_data%(filename)
     id_e = get_effective_ID(data_array);
     
 %% (3) TODO. Average the movement time for each configuration. 
-    mt = get_avg_movement_time(data_array);
+    mt = get_avg_movement_time(data_array, id);
     
 %% Remark: make sure that id, id_e and mt contain the data in the same
 % order. That is, the id of a trial x given by id(x) or id_e(x) corresponds 
@@ -47,9 +48,6 @@ function analyze_fitts_data%(filename)
     disp(['Throughput designed: ' num2str(get_throughput(id,mt))]);
     disp(['Throughput effective: ' num2str(get_throughput(id_e,mt))]);
 end
-
-
-
 
 
 

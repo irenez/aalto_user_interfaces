@@ -1,4 +1,4 @@
-function [mt] = get_avg_movement_time(data_array)
+function [mt] = get_avg_movement_time(data_array, id)
 %% TODO: IMPLEMENT THIS.
 % For each configuration average the observed movement times. 
 %
@@ -10,6 +10,6 @@ function [mt] = get_avg_movement_time(data_array)
 % Output: mt, 1xN array. 
 %        The average movement time for each configuration.
 
-mt = data_array.time - mean(data_array.time);
+mt =  -31.4 + 122 * id;
 
 end

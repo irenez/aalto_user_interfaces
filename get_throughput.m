@@ -14,6 +14,7 @@ function [throughput] = get_throughput(id, mt)
 %        The throughput as given in the lecture and averaged over all
 %        targets
 
+throughput = id ./ mt ;
 
 end
 

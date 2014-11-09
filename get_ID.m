@@ -11,5 +11,11 @@ function [id] = get_ID(data_array)
 % Output: id, 1xN array. 
 %        The ID of each configuration as given by the Shannon formulation.
 
-id = data_array.amplitude ./ data_array.width +1 ;
+for i = 1:length(data_array)
+    id(i) = log2( data_array{i}.amplitude(1) / data_array{i}.width(1) + 1 );
+end
+
+% data = table2cell(data_array{:});
+% id = cellfun(@rdivide, data(1,1), data(1,2)) + 1 ;
+
 end
