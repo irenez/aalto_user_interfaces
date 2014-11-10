@@ -36,6 +36,8 @@ function analyze_fitts_data(filename)
         mdl_effective_id = fitlm(id_e, mt);
     end
     
+    mdl_designed_id, mdl_effective_id
+    
 %% (4) TODO. Plot original data and model. 
     figure(1)
     if(~isempty(id) && ~isempty(mt))
@@ -48,7 +50,7 @@ function analyze_fitts_data(filename)
     
 %% (5) TODO. Display throughput    
     disp(['Throughput designed: ' num2str(get_throughput(id,mt))]);
-    disp(['Throughput effective: ' num2str(get_throughput(id_e,mt))]);
+    disp(['Throughput effective: ' num2str(get_throughput(id_e,mt))]);   
 end
 
 
