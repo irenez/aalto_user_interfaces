@@ -59,14 +59,14 @@ void draw()
   rect(posX, posY, boxSize, boxSize);
 
   // If player runs out of time:
-  if (frame == 200) {
+  if (frame == 300) {
     
     boxSize = boxSize-10;
     posX = randomize(posX);
     posY = randomize(posY);
     redraw();
     frame = 0;
-    score -=200;
+    score -=300;
   }
 
   // Move up level after 10 'hits'
@@ -85,7 +85,7 @@ void mousePressed() {
     posY = randomize(posY);
     x = randomize(x);
     y = randomize(y);
-    score += 200-frame;
+    score += 300-frame;
     frame = 0;
     hits +=1;
   } else {
@@ -112,7 +112,8 @@ public float randomize(float x) {
 }
 
 float metrics() {
-  ID = log2(abs(boxSize/xOffset)) + 1 ;
+  float offset = dist(xOffset, yOffset, posX+boxSize/2, posY+boxSize/2);
+  ID = log2(offset/boxSize) + 1 ;
   MT = -31.4 + 122 * ID ;
   TP_f = ID / MT ;
   int N = level + 1;
