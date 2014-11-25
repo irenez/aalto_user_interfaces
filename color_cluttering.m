@@ -1,7 +1,7 @@
 function [idx] = color_cluttering(filename)
 
 % Input: image filename
-% Output: 
+% Output: numerical index 
 
 img = imread(filename);
 % Convert RGB image into CIELab
