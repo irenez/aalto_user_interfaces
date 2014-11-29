@@ -1,5 +1,5 @@
 img = imread('tubemap.jpg');
-[X, clr_map] = imread('colormap.png');
-ind_img = rgb2ind(img, clr_map);
+X = importdata('colormap.png')
+ind_img = rgb2ind(img, X.colormap);
 imagesc(ind_img)
 axis off
