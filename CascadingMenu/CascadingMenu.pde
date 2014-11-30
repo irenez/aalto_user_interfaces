@@ -1,56 +1,51 @@
-boolean overBox = false;
-int boxWidth = 100;
+/**
+ * ControlP5 MultiList
+ * by andreas schlegel, 2009
+ */
+
+/** modified **/
+
+import controlP5.*;
+
 int boxHeight = 25;
-int posX;
-int [] posY = new int[10];
+int boxWidth = 100;
+int posX = 20;
+int posY = 20;
+
+ControlP5 controlP5;
+MultiList menu;
 
 void setup() {
+  size(700, 400);
+  frameRate(30);
+  controlP5 = new ControlP5(this);
 
-  size(640, 480);
-  smooth(); 
-  
-  PFont txtFont;
-  txtFont = createFont("Tahoma-12.vlw", 14);
-  textFont(txtFont);
-  posX = width/4;
+  // add a multiList to controlP5.
+  menu = controlP5.addMultiList("menuList", posX, posY, boxWidth, boxHeight);
 
-}
+  // create a multiListButton which we will use to
+  // add new buttons to the multilist
+  MultiListButton btn;
+  for (int i=1; i<=10; i++) {
+    btn = menu.add("level "+i, i);
 
-void draw() {
-  background(200);
+    for (int j=0; j<5; j++) {
+      MultiListButton sub = btn.add("level "+i+(j+1), 20+i+1);
+      sub.setLabel("L"+i+" - item"+(j+1));
+      sub.setColorBackground(color(64 + 18*j, 0, 0));
 
-  posY[1] = height/5;
-  for ( int i=2; i<10; i++) {
-    posY[i] = posY[i-1] + boxHeight;
-  }
-  menu menu1 = new menu("File", posX, posY[1]);
-  menu1.display();
-  menu menu2 = new menu("Edit", posX, posY[2]);
-  menu2.display();
-  menu menu3 = new menu("Sketch", posX, posY[3]);
-  menu3.display();
-  menu menu4 = new menu("Tools", posX, posY[4]);
-  menu4.display();
-  menu menu5 = new menu("Help", posX, posY[5]);
-  menu5.display();
-
-  if (overBox) {
-    menu submenu1 = new menu("New", posX+boxWidth, posY[1]);
-    submenu1.display();
-    menu submenu2 = new menu("Open", posX+boxWidth, posY[1]+boxHeight);
-    submenu2.display();
-  }
-}
-
-
-void mouseMoved() {
-  for ( int i=1; i<10; i++) {
-    if (mouseX > posX-boxWidth && mouseX < posX+boxWidth && 
-      mouseY > posY[i]-boxHeight && mouseY < posY[i]+boxHeight) {
-      overBox = true;
-    } else {
-      overBox = false;
+      for (int k=1; k<=3; k++) {
+        MultiListButton sub2 = sub.add("level "+i+(j+1)+(k+1), 20+i+1+k+1);
+        sub2.setLabel("L"+i+" - IT"+(j+1)+" - sub "+(k+1));
+        sub2.setColorBackground(color(64 + 18*k, 0, 36*k));
+      }
     }
   }
 }
+
+
+void draw() {
+  background(0);
+}
+
 
