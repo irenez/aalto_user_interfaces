@@ -18,15 +18,18 @@ MultiList menu;
 void setup() {
   size(700, 400);
   frameRate(30);
+  smooth();
   controlP5 = new ControlP5(this);
 
   // add a multiList to controlP5.
   menu = controlP5.addMultiList("menuList", posX, posY, boxWidth, boxHeight);
 
+
   // create a multiListButton which we will use to
   // add new buttons to the multilist
   MultiListButton btn;
   for (int i=1; i<=10; i++) {
+
     btn = menu.add("level "+i, i);
 
     for (int j=0; j<5; j++) {
@@ -37,15 +40,19 @@ void setup() {
       for (int k=1; k<=3; k++) {
         MultiListButton sub2 = sub.add("level "+i+(j+1)+(k+1), 20+i+1+k+1);
         sub2.setLabel("L"+i+" - IT"+(j+1)+" - sub "+(k+1));
-        sub2.setColorBackground(color(64 + 18*k, 0, 36*k));
+        sub2.setColorBackground(color(64 + 18*k, 36*k, 0));
       }
     }
   }
 }
 
-
 void draw() {
-  background(0);
+  background(10);
 }
 
-
+@Override
+void mouseMoved() {
+  if (menu.isMouseOver()) {
+    
+  }
+}
