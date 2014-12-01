@@ -50,9 +50,9 @@ void draw() {
   background(10);
 }
 
-@Override
 void mouseMoved() {
   if (menu.isMouseOver()) {
-    
+    print(true);
   }
+
 }
