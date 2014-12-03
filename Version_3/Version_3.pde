@@ -5,15 +5,18 @@ int boxWidth = 100;
 int posX = 100;
 int posY = 50;
 
+boolean isOver = false;
+
+PFont txtFont;
 ControlP5 controlP5;
-ListBox menu, l;
+ListBox menu, submenu;
+
 
 void setup() {
   size(700, 400);
   frameRate(30);
   smooth();
 
-  PFont txtFont;
   txtFont = createFont("Tahoma-12.vlw", 14);
   textFont(txtFont);
 
@@ -34,6 +37,25 @@ void setup() {
     color c = color(100);
     item.setColorBackground(c);
   }
+
+  if (isOver) {
+    submenu = controlP5.addListBox(" ")
+      .setPosition(posX+boxWidth, posY)
+        .setSize(boxWidth, 6*boxHeight)
+          .setItemHeight(boxHeight)
+            .setBarHeight(1)
+              .setColorBackground(color(20))
+                .setColorActive(color(0))
+                  .setColorForeground(color(150))
+                    .disableCollapse()
+                      ;
+    for (int i=1; i<=5; i++) {
+      ListBoxItem item = submenu.addItem("Level " + i, i);
+      color c = color(100);
+      item.setColorBackground(c);
+      item.setValue(i);
+    }
+  }
 }
 
 void draw() {
@@ -42,6 +64,11 @@ void draw() {
 
 void mouseMoved() {
   if (menu.isMouseOver()) {
-    menu.open();
+    isOver = true;
+    print (menu.getPosition());
+    print (menu.getValue());
+  } else {
+    isOver = false;
   }
 }
+
